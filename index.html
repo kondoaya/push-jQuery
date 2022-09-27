@@ -62,31 +62,26 @@
         ]
       };
 
-      $('.js-fortune-start').click(function() {
-        let js_fortune_num = Math.floor( Math.random() * 3 );
-
+      $('.js-fortune-start').on('click', function() {
         for(let key in fortuneResults) {
+          let js_fortune_num = Math.floor( Math.random() * 3 );
           let resultStars = fortuneResults[key][js_fortune_num]['stars'] ;
           let resultDetail = fortuneResults[key][js_fortune_num]['detail'] ;
-          $('.stars').html(resultStars);
-          $('.detail').html(resultDetail);
-        }
-        
-        $('.result').fadeIn(1500);
-
-        $(this).toggleClass("js-fortune-restart");
-        $('button').text('もう一度占う！');
-
+          const elem = $('.' + key);
+          elem.find('.stars').html(resultStars);
+          elem.find('.detail').html(resultDetail);
+          $('.result').fadeIn(1500);
+          $(this).toggleClass("js-fortune-restart").toggleClass("js-fortune-start");
+          $('.js-fortune-restart').text('もう一度占う！');
+        };
       });
 
-      
-      
-      $(this).toggleClass("js-fortune-start");
-
-      
+      $('.js-fortune-restart').on('click', function() {
+        $('.result').fadeOut();
+        $(this).toggleClass("js-fortune-start").toggleClass("js-fortune-restart");
+        $('.js-fortune-start').text('運勢を占う！');
+      });
     });
-
-    
     </script>
   </body>
 </html>
