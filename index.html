@@ -62,7 +62,7 @@
         ]
       };
 
-      $('.js-fortune-start').on('click', function() {
+      $(document).on('click', '.js-fortune-start', function() {
         for(let key in fortuneResults) {
           let js_fortune_num = Math.floor( Math.random() * 3 );
           let resultStars = fortuneResults[key][js_fortune_num]['stars'] ;
@@ -76,7 +76,7 @@
         };
       });
 
-      $('.js-fortune-restart').on('click', function() {
+      $(document).on('click', '.js-fortune-restart', function() {
         $('.result').fadeOut();
         $(this).toggleClass("js-fortune-start").toggleClass("js-fortune-restart");
         $('.js-fortune-start').text('運勢を占う！');
